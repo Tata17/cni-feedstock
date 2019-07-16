@@ -19,9 +19,13 @@ requirements:
     - {{ compiler('go') }}
     - {{ compiler('c') }}
     - make
+    - binutils_impl_linux-64
+    - libgcc-ng
   host:
+    - libgcc-ng 7.3.0
   run:
     - jq
+    - libgcc-ng >=7.3.0
 
 test:
   commands:
@@ -36,5 +40,7 @@ about:
   dev_url: https://github.com/containernetworking/cni
 
 extra:
-  recipe-maintainers:
-    - sodre
+    copy_test_source_files: true
+    final: true
+    recipe-maintainers:
+        - sodre
